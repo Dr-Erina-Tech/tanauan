@@ -1,11 +1,3 @@
-.card-container {
-  display: flex;
-  justify-content: center; /* Centers the cards horizontally */
-  gap: 20px; /* Adds spacing between cards */
-  flex-wrap: wrap; /* Wraps to a new row if not enough space */
-  padding: 20px;
-}
-
 .card {
   width: 300px;
   border-radius: 10px;
@@ -20,31 +12,31 @@
   transform: translateY(-10px);
 }
 
-.card-image {
+.cardImage {
   width: 100%;
   height: 180px;
   object-fit: contain;
 }
 
-.card-content {
+.cardContent {
   padding: 15px;
   text-align: center;
 }
 
-.card-title {
+.cardTitle {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #333;
 }
 
-.card-description {
+.cardDescription {
   font-size: 14px;
   color: #666;
   margin-bottom: 15px;
 }
 
-.card-button {
+.cardButton {
   background-color: #007bff;
   color: white;
   border: none;
@@ -55,6 +47,6 @@
   transition: background 0.3s ease;
 }
 
-.card-button:hover {
+.cardButton:hover {
   background-color: #0056b3;
 }

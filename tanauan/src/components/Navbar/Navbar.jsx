@@ -1,47 +1,55 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 import SearchBox from "../SearchBox/SearchBox";
+import assets from "../../assets/Assets";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav>
-      <div className="nav-container">
-        {/* Logo and Title */}
-        <div className="logo-container">
-          <span className="title">Tanauan</span>
-        </div>
-
-        {/* Navigation Links */}
-        <div className={`nav-links ${menuOpen ? "show" : ""}`}>
-          {["Home", "About", "News", "Services", "Contact"].map((text) => (
-            <Link
-              key={text}
-              to={`/${text.toLowerCase()}`}
-              className="hover-underline-animation"
-            >
-              {text}
-            </Link>
-          ))}
-        </div>
-
-        {/* Search Box, Menu, and Login */}
-        <div className="menu-login-container">
-          <SearchBox /> {/* Add search box here */}
-          <Link to="/" className="login-button">
+    <>
+      <div className={styles.topnavContainer}>
+        <img className={styles.logoImg} src={assets.Logo} alt="Tanauan City" />
+        <div className={styles.navRight}>
+          <SearchBox />
+          <Link to="/" className={styles.loginButton}>
             Login
           </Link>
-          <Menu
-            size={28}
-            className="menu-icon"
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
         </div>
+        <Menu
+          size={28}
+          className={styles.menuIcon}
+          onClick={() => setMenuOpen(!menuOpen)}
+        />
       </div>
-    </nav>
+      <nav>
+        <div className={styles.navContainer}>
+          {/* Navigation Links */}
+          <div className={`${styles.navLinks} ${menuOpen ? styles.show : ""}`}>
+            {[
+              "Home",
+              "The City",
+              "Government",
+              "City Transactions",
+              "Business",
+              "Transparency Report",
+              "Tourism",
+              "Careers",
+            ].map((text) => (
+              <Link
+                key={text}
+                to={`/${text.toLowerCase()}`}
+                className={styles.linkAnimation}
+              >
+                {text}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </>
   );
 };
 

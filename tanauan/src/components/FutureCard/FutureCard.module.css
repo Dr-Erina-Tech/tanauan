@@ -1,0 +1,57 @@
+/* Card Container */
+.card {
+  width: 270px;
+  height: 230px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #cecece;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  overflow: visible; /* Allow elements to extend outside */
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Box that extends outside the card */
+.overflowBox {
+  width: 170px;
+  height: 130px;
+  background: #eb5353;
+  border-radius: 20px;
+  position: relative;
+  top: -50px; /* Moves it outside the card */
+  left: 50%;
+  transform: translateX(-50%); /* center the box vertically */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image inside the overflow box */
+.overflowImage {
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.cardContent h2 {
+  color: red;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.cardContent p {
+  margin-top: 5px;
+  text-decoration: underline;
+}

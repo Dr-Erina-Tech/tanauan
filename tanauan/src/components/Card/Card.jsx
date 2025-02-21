@@ -1,17 +1,14 @@
 import React from "react";
-import "./Card.css";
-import DefaultImage from "../../assets/react.svg";
+import styles from "./Card.module.css";
 
 const Card = ({ title, description, image }) => {
   return (
-    <div className="card">
-      {image && (
-        <img className="card-image" src={image || DefaultImage} alt={title} />
-      )}
-      <div className="card-content">
-        <h2 className="card-title">{title}</h2>
-        <p className="card-description">{description}</p>
-        <button className="card-button">Learn More</button>
+    <div className={styles.card}>
+      {image && <img className={styles.cardImage} src={image} alt={title} />}
+      <div className={styles.cardContent}>
+        <h2 className={styles.cardTitle}>{title}</h2>
+        <p className={styles.cardDescription}>{description}</p>
+        <button className={styles.cardButton}>Learn More</button>
       </div>
     </div>
   );

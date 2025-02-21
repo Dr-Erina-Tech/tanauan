@@ -1,4 +1,4 @@
-.search-box {
+.searchBox {
   position: relative;
   display: flex;
   align-items: center;
@@ -12,11 +12,11 @@
   overflow: hidden;
 }
 
-.search-box.expanded {
+.expanded {
   width: 250px; /* Expanded width */
 }
 
-.search-input {
+.searchInput {
   border: none;
   outline: none;
   padding: 5px;
@@ -26,13 +26,13 @@
   transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-.search-box.expanded .search-input {
+.expanded .searchInput {
   width: 200px;
   opacity: 1;
 }
 
-.search-icon,
-.close-icon {
+.searchIcon,
+.closeIcon {
   background: none;
   border: none;
   cursor: pointer;
@@ -42,7 +42,7 @@
   transition: color 0.3s ease-in-out;
 }
 
-.search-icon:hover,
-.close-icon:hover {
+.searchIcon:hover,
+.closeIcon:hover {
   color: #de137c;
 }

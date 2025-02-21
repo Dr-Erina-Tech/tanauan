@@ -1,0 +1,154 @@
+.topnavContainer {
+  padding-top: 20px;
+  height: 70px;
+  background-color: var(--color-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space out items */
+  padding: 0 20px;
+  position: relative;
+}
+
+.logoImg {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between search and login */
+}
+
+/* Menu Icon */
+.menuIcon {
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease-in-out;
+  display: none; /* Hidden by default on larger screens */
+}
+
+.menuIcon:hover {
+  color: #de137c;
+}
+
+/* Login Button */
+.loginButton {
+  padding: 8px 16px;
+  background-color: #f9d923;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.loginButton:hover {
+  background-color: #de137c;
+  color: white;
+}
+
+nav {
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  z-index: 10;
+  background: transparent;
+  padding: 6px 0;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+  height: 70px;
+}
+
+/* Logo and Title */
+.logoContainer {
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  white-space: nowrap;
+  margin: 0 10%;
+}
+
+.navLinks a {
+  padding: 6px 16px;
+  position: relative;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 15px;
+}
+
+.linkAnimation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: red;
+  transition: transform 0.3s ease-out;
+}
+
+.linkAnimation:hover::after {
+  transform: scaleX(0.7);
+}
+
+.linkAnimation:hover::after {
+  transform-origin: bottom center;
+}
+
+@media (max-width: 768px) {
+  .navContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  .navLinks {
+    display: none; /* Hide navigation links */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: rgb(238, 166, 148);
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .navLinks.show {
+    display: flex; /* Show when menu is clicked */
+  }
+
+  .menuIcon {
+    display: block; /* Show menu icon */
+  }
+}
