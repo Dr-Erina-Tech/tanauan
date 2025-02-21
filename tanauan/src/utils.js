@@ -1,7 +1,7 @@
 export const getImageUrl = (path) => {
-  return `/public/assets/${path}`; 
+  return `/src/assets/${path}`; 
 }
 
 export const getVideoUrl = (path) => {
-  return `/public/assets/${path}`;
+  return `/src/assets/${path}`;
 }

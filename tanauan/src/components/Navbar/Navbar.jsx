@@ -12,8 +12,8 @@ const Navbar = () => {
       <div className="nav-container">
         {/* Logo and Title */}
         <div className="logo-container">
-          <img src="/assets/navbar/tanauan.svg" alt="Logo" className="logo-image" />
-          <span className="title">Tanauan</span>
+          <img src="/src/assets/navbar/tanauan.svg" alt="Logo" className="logo-image" />
+        
         </div>
 
         {/* Navigation Links */}
