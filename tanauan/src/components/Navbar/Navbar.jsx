@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, HelpCircle, ChevronDown } from "lucide-react";
 import styles from "./Navbar.module.css";
@@ -7,6 +7,7 @@ import { getImageUrl } from "../../utils";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dateTime, setDateTime] = useState("");
 
   const navItems = [
     { text: "Home", hasDropdown: false },
@@ -16,45 +17,63 @@ const Navbar = () => {
     { text: "Business", hasDropdown: true, dropdownItems: ["Tanauan E-Services"] },
     { text: "Transparency Report", hasDropdown: true, dropdownItems: ["Bids and awards", "Assessor's", "Full Disclosure Report"] },
     { text: "Tourism", hasDropdown: false },
-    { text: "Careers", hasDropdown: true, dropdownItems: ["Job Fair"] },
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" };
+      setDateTime(now.toLocaleString("en-PH", options));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
       <div className={styles.topnavContainer}>
-        <div className={styles.navLeft}>
-          <SearchBox className={styles.searchBox} />
-        </div>
-        <img
-          className={styles.logoImg}
-          src={getImageUrl("./Navbar/tanauan.svg")}
-          alt="Tanauan City"
-        />
-        <div className={styles.navRight}>
-          <Link to="/" className={styles.loginButton}>
-            Login
-          </Link>
-          <Link to="/help" className={styles.helpLink}>
-            <HelpCircle size={16} className={styles.helpIcon} /> Help
-          </Link>
-        </div>
         <Menu
           size={28}
           className={styles.menuIcon}
           onClick={() => setMenuOpen(!menuOpen)}
         />
+        {/* Heading with margin-right */}
+        <div className={styles.topLeft}></div>
+        <h1 className={styles.headingNav}>City Government of Tanauan</h1>
+
+        {/* Philippine Flag, Date, and Search/Help on the right */}
+        <div className={styles.topRight}>
+          <img
+            src={getImageUrl("./Navbar/philippines-flag.svg")}
+            alt="Philippine Flag"
+            className={styles.flagIcon}
+          />
+          <div className={styles.separator}></div>
+          <span className={styles.dateTime}>{dateTime}</span>
+          <SearchBox className={styles.searchBox} />
+          <Link to="/help" className={styles.helpLink}>
+            <HelpCircle size={16} className={styles.helpIcon} /> Help
+          </Link>
+        </div>
       </div>
 
       <nav>
         <div className={styles.navContainer}>
+          {/* Logo on the left */}
+          <img
+            className={styles.logoImg}
+            src={getImageUrl("./Navbar/tanauan.svg")}
+            alt="Tanauan City"
+          />
+
+          {/* Navigation Links */}
           <div className={`${styles.navLinks} ${menuOpen ? styles.show : ""}`}>
             {navItems.map(({ text, hasDropdown, dropdownItems }) => (
               <div key={text} className={styles.navItem}>
                 <Link
-                    to={`/${text.toLowerCase().replace(/\s+/g, '-')}`}
-                    className={styles.linkAnimation}
-                  >
+                  to={`/${text.toLowerCase().replace(/\s+/g, '-')}`}
+                  className={styles.linkAnimation}
+                >
                   {text}
                   {hasDropdown && (
                     <ChevronDown
@@ -63,16 +82,16 @@ const Navbar = () => {
                     />
                   )}
                 </Link>
-                {hasDropdown &&  (   
+                {hasDropdown && (
                   <div className={styles.dropdownMenu}>
-                      {dropdownItems.map((item) => (
-                        <Link
-                          key={item}
-                          to={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                          className={styles.dropdownItem}
-                        >
-                          {item}
-                        </Link>
+                    {dropdownItems.map((item) => (
+                      <Link
+                        key={item}
+                        to={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                        className={styles.dropdownItem}
+                      >
+                        {item}
+                      </Link>
                     ))}
                   </div>
                 )}
