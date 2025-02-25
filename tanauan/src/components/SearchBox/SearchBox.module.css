@@ -1,0 +1,48 @@
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 2px solid rgb(238, 166, 148);
+  padding: 8px;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  width: 40px; /* Default small size */
+  height: 38px; /* Match login button height */
+  border-radius: 5px; /* Match login button */
+  overflow: hidden;
+}
+
+.expanded {
+  width: 250px; /* Expanded width */
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 14px;
+  width: 0;
+  opacity: 0;
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.expanded .searchInput {
+  width: 200px;
+  opacity: 1;
+}
+
+.searchIcon,
+.closeIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 20px;
+  color: rgb(238, 166, 148);
+  transition: color 0.3s ease-in-out;
+}
+
+.searchIcon:hover,
+.closeIcon:hover {
+  color: #de137c;
+}

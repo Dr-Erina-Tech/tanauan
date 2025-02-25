@@ -1,29 +1,36 @@
 import React from 'react';
-import styles from './Hero.module.css'; // Correctly import the CSS module
-import { Link } from 'react-router-dom';
+import styles from './Hero.module.css'; // CSS module for styling
+import { Link } from 'react-router-dom'; // For navigation
+import Socials from '../Socials/Socials'; // Social links component
+import { UserPlus, ArrowUpRight } from 'lucide-react'; // Icons
 
 const Hero = () => {
   return (
     <div className={styles.heroContainer}>
-  
+
+      {/* Hero Content Section */}
       <div className={`text-black p-5 ${styles.leftTextContainer}`}>
-  
-        <h1 className={styles.heading}> 
+        <h1 className={styles.heading}>
           <span className={styles.cityName}>Tanauan City</span> Portal
         </h1>
         <p className={styles.paragraph}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. 
           Rerum quis accusantium distinctio, minima consectetur sunt 
-          consequatur expedita doloremque, quas sed
+          consequatur expedita doloremque, quas sed.
         </p>
-        <button className={`btn btn-outline-danger mt-2 ${styles.btnAcc}`}>
-          <i className="bi bi-person-plus p-1"></i> Create your Tanauan GOV Account
-          <i className="bi bi-arrow-up-right ps-2"></i>
+        <button className={`btn mt-2 ${styles.btnAcc}`}>
+          <UserPlus className="p-1" /> Create your Tanauan GOV Account
+          <ArrowUpRight className="ps-2" />
         </button>
         <p className={`mt-2 ps-2 ${styles.loginText}`}>
-          Already have an account? <Link to="/login" className={styles.loginLink}>Login here.</Link>
+          Already have an account? 
+          <Link to="/login" className={styles.loginLink}> Login here.</Link>
         </p>
       </div>
+
+      {/* Social Links Section */}
+      <Socials />
+      
     </div>
   );
 };

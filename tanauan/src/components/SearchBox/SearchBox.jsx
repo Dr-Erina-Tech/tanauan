@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import "./SearchBox.css";
 import { X, Search } from "lucide-react";
+import styles from "./SearchBox.module.css";
 
 const SearchBox = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -18,20 +18,20 @@ const SearchBox = () => {
   };
 
   return (
-    <div className={`search-box ${isExpanded ? "expanded" : ""}`}>
+    <div className={`${styles.searchBox} ${isExpanded ? styles.expanded : ""}`}>
       {isExpanded ? (
-        <button className="close-icon" onClick={handleClose}>
+        <button className={styles.closeIcon} onClick={handleClose}>
           <X size={20} />
         </button>
       ) : (
-        <button className="search-icon" onClick={handleExpand}>
+        <button className={styles.searchIcon} onClick={handleExpand}>
           <Search size={20} />
         </button>
       )}
       <input
         ref={inputRef}
         type="text"
-        className="search-input"
+        className={styles.searchInput}
         placeholder="Type something here"
         value={query}
         onChange={(e) => setQuery(e.target.value)}

@@ -1,0 +1,11 @@
+.servicesContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 0 50px;
+  position: relative;
+  background: url('../../assets/Service/ServiceBG.svg') no-repeat center center/cover;
+  z-index: 1;
+  
+}
