@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'; // For navigation
 import Socials from '../Socials/Socials'; // Social links component
 import { UserPlus, ArrowUpRight } from 'lucide-react'; // Icons
 
+
 const Hero = () => {
   return (
     <div className={styles.heroContainer}>
@@ -18,13 +19,12 @@ const Hero = () => {
           Rerum quis accusantium distinctio, minima consectetur sunt 
           consequatur expedita doloremque, quas sed.
         </p>
-        <button className={`btn mt-2 ${styles.btnAcc}`}>
-          <UserPlus className="p-1" /> Create your Tanauan GOV Account
+        <button className={`btn mt-2 ${styles.btnStart}`}>
+          <UserPlus className="p-1" /> Get Started
           <ArrowUpRight className="ps-2" />
         </button>
         <p className={`mt-2 ps-2 ${styles.loginText}`}>
           Already have an account? 
-          <Link to="/login" className={styles.loginLink}> Login here.</Link>
         </p>
       </div>
 

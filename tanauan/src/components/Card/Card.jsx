@@ -1,12 +1,11 @@
 import React from "react";
 import "./Card.css";
-import DefaultImage from "../../assets/react.svg";
 
 const Card = ({ title, description, image }) => {
   return (
     <div className="card">
       {image && (
-        <img className="card-image" src={image || DefaultImage} alt={title} />
+        <img className="card-image" src={image} alt={title} />
       )}
       <div className="card-content">
         <h2 className="card-title">{title}</h2>

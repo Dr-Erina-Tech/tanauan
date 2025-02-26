@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem; 
-  border-bottom: 2px solid var(--color-secondary);
   position: relative;
 }
 
@@ -30,7 +29,7 @@
   align-items: center;
   gap: 15px;
   margin-left: auto;
-  padding-right: 8em;
+  padding-right: 5em;
 }
 
 .flagIcon {
@@ -112,7 +111,7 @@ nav {
 .logoImg {
   width: 120px;
   height: auto;
-  margin-right: 17em;
+  margin-right: 2em;
 }
 
 .navLinks {
@@ -132,6 +131,7 @@ nav {
   transition: background-color 0.3s ease-in-out;
   font-size: 0.95em;
   font-weight: 600;
+  gap: 5px;
 }
 
 .navItem {
@@ -186,6 +186,40 @@ nav {
 .linkAnimation:hover::after {
   transform: scaleX(1);
   transform-origin: bottom center;
+}
+
+/*for the contact button*/
+
+.contactUsContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 7em;
+}
+
+/* Contact Us Button Styling */
+.contactUsButton {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 160px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  gap: 8px;
+}
+
+.contactUsButton:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Icon for Contact Us button */
+.contactUsButton svg {
+  margin: 5px;
+  
 }
 
 /*---------------------------------------For responsive media queries----------------------------------*/

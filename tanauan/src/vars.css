@@ -2,9 +2,11 @@
   /* Colors */
   --color-text: #000000; 
   --color-secondary-text: #ffffff;
-  --color-primary: #00674f  ;
-  --color-secondary: #D5624D;
+  --color-primary:  #D5624D;
+  --color-secondary: #00674f;
   --color-highlight: #ec4a61;
+
+  --color-red: rgb(254, 80, 80);
 
   --color-dark: #ffc55b;
   --color-light: #feeea1;

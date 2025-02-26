@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, HelpCircle, ChevronDown } from "lucide-react";
+import { Menu, HelpCircle, ChevronDown, Phone } from "lucide-react";
 import styles from "./Navbar.module.css";
 import SearchBox from "../SearchBox/SearchBox";
 import { getImageUrl } from "../../utils";
@@ -97,6 +97,13 @@ const Navbar = () => {
                 )}
               </div>
             ))}
+          </div>
+
+          {/* Contact Us Button */}
+            <div className={styles.contactUsContainer}>
+            <Link to="/contact-us" className={styles.contactUsButton}>
+              <Phone size={16} /> Contact Us
+            </Link>
           </div>
         </div>
       </nav>

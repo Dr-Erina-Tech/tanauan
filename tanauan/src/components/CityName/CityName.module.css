@@ -1,0 +1,27 @@
+.cityNameContainer {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+  height: 100vh; 
+  overflow: hidden; 
+  position: relative;
+  padding-top: 20px; 
+  background-color: var(--color-red);
+}
+
+.imageContainer {
+  width: 100%;
+  position: relative;
+  margin: 0; 
+}
+
+.centerImage {
+  height: auto;
+  object-fit: cover; 
+}
+
+.leftImage, .rightImage {
+  width: 100%;
+  height: 80px;
+}

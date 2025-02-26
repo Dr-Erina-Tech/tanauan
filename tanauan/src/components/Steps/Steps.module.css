@@ -1,0 +1,87 @@
+
+.stepsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: var(--color-bg);
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/*for animation only*/
+.title, .subtitle{
+  opacity: 0; /* Start hidden */
+  transform: scale(0.9); /* Start slightly smaller */
+  transition: opacity 0.8s ease, transform 0.8s ease; /* Animation for fade and scale */
+}
+
+
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+.step-image{
+  height: 150px;
+}
+
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*some of the code here is for animation */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 0.8s ease, transform 0.8s ease; 
+}
+
+.visible {
+  opacity: 1; 
+  transform: scale(1) /* Move to original size */
+}
+
+.hidden {
+  opacity: 0; 
+  transform: scale(0);
+}
+
+/*End of code for animation */
+
+.step-image {
+  margin-bottom: 1rem;
+}
+
+.step-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.step-description {
+  color: #4a5568;
+}
+
+.dotted-line {
+  border-top: 1px dotted var(--color-primary);
+  width: 100%;
+  margin: 1rem 0;
+}
