@@ -14,12 +14,12 @@ const StepCard = ({ image, imgAlt, title, description, isVisible }) => (
 const Steps = () => {
   const { ref: titleRef, inView: titleInView } = useInView({
     threshold: 0.1,
-    triggerOnce: false, // Allow animation on both enter and exit
+    triggerOnce: false, // This Allows animation on both enter and exit
   });
 
   const { ref: subtitleRef, inView: subtitleInView } = useInView({
     threshold: 0.1,
-    triggerOnce: false, // Allow animation on both enter and exit
+    triggerOnce: false, 
   });
 
   return (
@@ -34,7 +34,7 @@ const Steps = () => {
         {stepsData.map((step, index) => {
           const { ref, inView } = useInView({
             threshold: 0.1,
-            triggerOnce: false, // Allow animation on both enter and exit
+            triggerOnce: false,
           });
 
           return (

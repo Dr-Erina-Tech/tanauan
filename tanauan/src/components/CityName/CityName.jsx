@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion'; 
+import { motion, useScroll, useTransform } from 'framer-motion'; //This is needed for the movement of the texts
 import styles from './CityName.module.css'; 
 import { getImageUrl } from '../../utils';
 
@@ -27,7 +27,7 @@ const CityName = () => {
       </motion.div>
    
       <motion.div
-        style={{ x: centerImageX }} // Apply the transformed x value for center image
+        style={{ x: centerImageX }} 
         className={styles.imageContainer}
       >
         <img 
