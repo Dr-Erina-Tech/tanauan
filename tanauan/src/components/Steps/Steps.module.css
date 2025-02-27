@@ -1,10 +1,9 @@
-
 .stepsContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1rem;
+  padding: 5rem 1rem;
   text-align: center;
-  background-color: var(--color-bg);
+  position: relative; /* Important for positioning the line */
 }
 
 .subtitle {
@@ -19,52 +18,49 @@
   margin-bottom: 2rem;
 }
 
-/*for animation only*/
-.title, .subtitle{
-  opacity: 0; /* Start hidden */
-  transform: scale(0.9); /* Start slightly smaller */
-  transition: opacity 0.8s ease, transform 0.8s ease; /* Animation for fade and scale */
+/* Animation only */
+.title, .subtitle {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-
-
 .steps {
+  margin-top: 5rem;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 2rem;
 }
 
-.step-image{
+.step-image {
   height: 150px;
 }
 
 @media (min-width: 768px) {
   .steps {
     grid-template-columns: repeat(3, 1fr);
+    position: relative; /* To contain the middle line within the grid */
   }
 }
 
-/*some of the code here is for animation */
 .step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0; 
-  transform: translateY(20px); 
-  transition: opacity 0.8s ease, transform 0.8s ease; 
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .visible {
-  opacity: 1; 
-  transform: scale(1) /* Move to original size */
+  opacity: 1;
+  transform: scale(1);
 }
 
 .hidden {
-  opacity: 0; 
+  opacity: 0;
   transform: scale(0);
 }
-
-/*End of code for animation */
 
 .step-image {
   margin-bottom: 1rem;
@@ -80,8 +76,49 @@
   color: #4a5568;
 }
 
-.dotted-line {
-  border-top: 1px dotted var(--color-primary);
-  width: 100%;
-  margin: 1rem 0;
+/* Middle line with a one-time moving dotted animation */
+.middle-line-top,
+.middle-line-bottom {
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-red) 0,
+    var(--color-red) 2px,  /* Dot size */
+    transparent 2px, 
+    transparent 6px      /* Space between dots */
+  );
+  background-size: 200% 100%;
+  background-position: 0 0;
+  z-index: -1;
+  animation: dot-move 4s ease forwards; /* Single-run animation */
+}
+
+/* Animation for moving dotted line */
+@keyframes dot-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+/* Adjust for top and bottom lines behind the steps CARD */
+.middle-line-top {
+  top: calc(50% - 150px); /* Adjust for the first row LINE */
+}
+
+.middle-line-bottom {
+  top: calc(50% + 150px); /* Adjust for the second row LINE */
+}
+
+
+/* Hide the lines on mobile devices */
+@media (max-width: 767px) {
+  .middle-line-top,
+  .middle-line-bottom {
+    display: none; /* Hide the lines on small screens */
+  }
 }
