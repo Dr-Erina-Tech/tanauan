@@ -89,7 +89,7 @@
 
 /*start of nav*/
 nav {
-  position: relative;
+  position: absolute;
   top: 8%;
   left: 2rem; 
   width: 50%;

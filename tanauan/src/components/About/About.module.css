@@ -2,11 +2,12 @@
   position: relative;
   overflow: hidden; 
 }
+
 /* the wrapper for the text and logo */
 .content {
   position: relative;
   z-index: 10; 
-  padding: 10rem 7rem 0 7rem;
+  padding: 1rem 7rem 0 7rem;
 }
 
 .logoImageContainer {

@@ -1,94 +1,73 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Steps.module.css';
-import stepsData from './stepsData'; // Import the steps data
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import stepsData from './stepsData';
+import { animateElement, animateTitleAndSubtitle } from '../../animations/scrollPopAnimations'; //separate scroll animation
+import useIntersectionObserver from '../../hooks/useIntersectionObserver'; // custom hook for my scroll 
 
-//Code optimized for animation
-gsap.registerPlugin(ScrollTrigger);
-
-// StepCard component
-const StepCard = ({ image, imgAlt, title, description, isVisible }) => (
-  <div className={`${styles.step} ${isVisible ? styles.visible : styles.hidden}`}>
+const StepCard = ({ image, imgAlt, title, description }) => (
+  <div className={styles.step}>
     <img src={image} alt={imgAlt} className={styles['step-image']} />
     <h3 className={styles['step-title']}>{title}</h3>
     <p className={styles['step-description']}>{description}</p>
   </div>
 );
 
-// Reusable animation function to optimize repeated animations
-const animateStepContent = (element, image, title, description) => {
-  gsap.fromTo(
-    image,
-    { y: 50, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.5, scrollTrigger: { trigger: element, start: 'top 80%', end: 'top 30%', toggleActions: 'play none none reverse' } }
-  );
-  
-  gsap.fromTo(
-    title,
-    { y: 50, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.5, delay: 0.2, scrollTrigger: { trigger: element, start: 'top 80%', end: 'top 30%', toggleActions: 'play none none reverse' } }
-  );
-
-  gsap.fromTo(
-    description,
-    { y: 50, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.5, delay: 0.4, scrollTrigger: { trigger: element, start: 'top 80%', end: 'top 30%', toggleActions: 'play none none reverse' } }
-  );
-};
-
 const Steps = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const stepsRefs = useRef([]);
+  const lineTopRef = useRef(null);
+  const lineBottomRef = useRef(null);
+
+  // State to track scroll direction
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
 
   useEffect(() => {
-    // Title with pop effect
-    gsap.fromTo(
-      titleRef.current,
-      { y: -50, opacity: 0, scale: 0.8 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1.05,
-        duration: 0.5,
-        ease: 'bounce.out',
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: 'top 80%',
-          end: 'top 30%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
+    let lastScrollY = window.scrollY;
 
-    // Subtitle animation (fade-in)
-    gsap.fromTo(
-      subtitleRef.current,
-      { y: -50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 0.5,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: subtitleRef.current,
-          start: 'top 80%',
-          end: 'top 30%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrollingDown(currentScrollY > lastScrollY);
+      lastScrollY = currentScrollY;
+    };
 
-    // Steps animation (image and description)
-    stepsRefs.current.forEach((step) => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Reusable animation for title and subtitle
+    animateTitleAndSubtitle(titleRef, subtitleRef);
+
+    // Animate each step's content
+    stepsRefs.current.forEach((step, index) => {
       const image = step.querySelector(`.${styles['step-image']}`);
       const title = step.querySelector(`.${styles['step-title']}`);
       const description = step.querySelector(`.${styles['step-description']}`);
 
-      // Use reusable animation function
-      animateStepContent(step, image, title, description);
+      animateElement(image, { trigger: step, delay: 0 });
+      animateElement(title, { trigger: step, delay: 0.2 });
+      animateElement(description, { trigger: step, delay: 0.4 });
     });
   }, []);
+
+  // Intersection observer callback to trigger line animations
+  const handleIntersection = (entry) => {
+    if (entry.isIntersecting && isScrollingDown) {
+      // Add the class only when scrolling down
+      entry.target.classList.add(styles['visible-line']);
+    }
+  };
+
+  // Use the custom IntersectionObserver hook for both lines
+  useIntersectionObserver(
+    [lineTopRef, lineBottomRef],
+    { threshold: 0.1 }, // Trigger when 10% of the element is visible
+    handleIntersection
+  );
 
   return (
     <div className={styles.stepsContainer}>
@@ -99,24 +78,21 @@ const Steps = () => {
         Sign up in 6 simple steps
       </h1>
 
-      {/* Horizontal line for all rows */}
-      <div className={styles['middle-line-top']}></div>
-      <div className={styles['middle-line-bottom']}></div>
+      {/* Middle lines */}
+      <div ref={lineTopRef} className={styles['middle-line-top']}></div>
+      <div ref={lineBottomRef} className={styles['middle-line-bottom']}></div>
 
-      {/* Steps are grouped in rows */}
       <div className={styles.steps}>
         {stepsData.map((step, index) => (
           <div
             ref={(el) => (stepsRefs.current[index] = el)}
             key={index}
-            className={styles.stepWrapper}
           >
             <StepCard
               image={step.image}
               imgAlt={step.imgAlt}
               title={step.title}
               description={step.description}
-              isVisible={true}
             />
           </div>
         ))}

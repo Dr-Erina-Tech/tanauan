@@ -8,6 +8,7 @@ export { default as Services } from "./Services/Services"
 export { default as Steps } from "./Steps/Steps"
 export { default as City } from "./CityName/CityName"
 export { default as About } from "./About/About"
+export { default as Gallery } from "./Gallery/Gallery"
 
 
 //for elements

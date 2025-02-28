@@ -1,0 +1,49 @@
+/* HeroCard.module.css */
+.heroContainer {
+  position: relative;
+  overflow: hidden; 
+  text-align: center; 
+}
+
+/* Animation for the hero card */
+.slideIn {
+  opacity: 1; 
+  transform: translateY(0px); 
+  transition: opacity 0.5s ease, transform 0.5s ease; 
+}
+
+.slideOut {
+  opacity: 0; 
+  transform: translateY(20px); 
+}
+/* End of Animation for the hero card */
+
+.cardImage {
+  width: 100%; 
+  height: auto; 
+  border-radius: 20px; 
+  z-index: 1; 
+}
+
+.heroCard {
+  background: #fee3df; 
+  width: 80%;
+  margin: -7% auto 0; 
+  padding: 10px;
+  border-radius: 20px;
+  position: relative; 
+  z-index: 2; 
+}
+
+.cardTitle {
+  font-family: Poppins;
+  color: var(--color-text);
+  font-size: 1.2rem; 
+  margin-bottom: 10px; 
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: var(--color-text);
+  text-align: center; 
+}
