@@ -31,12 +31,18 @@
   z-index: -1;
 }
 
-
-
 .title {
   font-size: 1.7rem;
 }
 
 .description1, .description2 {
   font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .logoTanauanImage{
+    height: auto;
+    width: 150px;
+    padding: 1rem 1rem;
+  }
 }

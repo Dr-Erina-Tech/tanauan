@@ -12,7 +12,7 @@
 
 /* Styling for each social link */
 .socialLink {
-  color: var(--color-secondary); 
+  color: var(--color-primary); 
   text-decoration: none;
   font-size: 2rem;
   transition: color 0.3s, background-color 0.3s; 
@@ -27,5 +27,5 @@
 
 .socialLink:hover {
   color: var(--color-light); 
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
 }

@@ -14,7 +14,7 @@ const Hero = () => {
         {/* Hero Content Section */}
         <div className={`text-black p-5 ${styles.leftTextContainer}`}>
           <h1 className={styles.heading}>
-            <span className={styles.cityName}>Tanauan City</span> Portal
+            <span className={styles.cityName}>Tanauan City</span> 
           </h1>
           <p className={styles.paragraph}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 

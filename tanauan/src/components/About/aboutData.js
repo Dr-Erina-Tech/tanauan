@@ -14,6 +14,6 @@ export const aboutData ={
   },
   conclusion: "With this innovation, truly, the future holds a promising direction for the nation!",
   logoSrc: "https://placehold.co/300x300",
-  backgroundSrc: getImageUrl("./about/aboutBG.png") ,
+  backgroundSrc: getImageUrl("./about/aboutBG1.svg") ,
   backgroundAlt: "Illustration of a government building with people, trees, and vehicles in front"
 };

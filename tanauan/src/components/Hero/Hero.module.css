@@ -23,10 +23,9 @@
 .cardContainer {
   width: 40%; 
   margin: 4rem 6rem 0 0 ;
-
-
 }
-/*end of ther hero card*/
+
+/*end of the hero card*/
 
 /* Left text container styling */
 .leftTextContainer {
@@ -80,7 +79,6 @@
   padding-top: 10px;
   font-weight: 500;
 }
-
 
 
 /* Media queries for responsiveness */
