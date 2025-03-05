@@ -8,6 +8,7 @@ const LazyHome = React.lazy(() => import('./pages/Home/Home'));
 const routes = [
   { path: "/", element: <LazyHome /> },
   { path: "/home", element: <LazyHome /> },
+
 ];
 
 const App = () => {

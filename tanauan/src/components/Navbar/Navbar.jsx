@@ -99,11 +99,14 @@ const Navbar = () => {
 
       <nav>
         <div className={styles.navContainer}>
+        <Link to="/home">
           <img
             className={styles.logoImg}
             src={getImageUrl("./Navbar/tanauan.svg")}
             alt="Tanauan City"
           />
+        </Link>
+
           <div className={`${styles.navLinks} ${menuOpen ? styles.show : ""}`}>
             {navItems.map(({ text, hasDropdown, dropdownItems }) => (
               <div key={text} className={styles.navItem}>

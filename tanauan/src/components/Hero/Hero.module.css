@@ -39,14 +39,14 @@
 .heading {
   font-family: 'Monomakh', sans-serif;
   color: var(--color-text);
-  font-size: 3rem;
+  font-size: 4rem;
   line-height: 1.15em;
   font-weight: 900;
   margin-bottom: 20px;
 }
 
 /* City name styling */
-.cityName {
+.name {
   color: var(--color-primary);
 }
 
@@ -71,15 +71,6 @@
   background-color: var(--color-dark);
   color: var(--color-text);
 }
-
-/* Login text and link styling */
-.loginText {
-  font-size: 0.9rem;
-  text-transform: capitalize;
-  padding-top: 10px;
-  font-weight: 500;
-}
-
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
