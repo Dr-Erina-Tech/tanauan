@@ -10,7 +10,7 @@ import servicesData from "./servicesData";
 const Services = () => {
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.serviceContainer}>
         <div className={styles.leftTextContainer}>
           <h1 className={styles.heading}>
             <span className={styles.cityName}>Modern Public Services</span>

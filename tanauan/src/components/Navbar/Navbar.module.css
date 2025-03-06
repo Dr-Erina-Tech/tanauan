@@ -165,12 +165,13 @@ nav {
   transition: background-color 0.3s ease;
 }
 
-.dropdownItem:hover {
-  background-color: #f1f1f1;
-}
-
 .dropdownIcon {
   margin-left: 5px;
+}
+
+/* Add background-color on hover for the dropdown item */
+.dropdownItem:hover {
+  background-color: #f1f1f1;
 }
 
 .linkAnimation::after {

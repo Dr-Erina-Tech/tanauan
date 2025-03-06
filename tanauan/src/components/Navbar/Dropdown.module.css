@@ -19,8 +19,8 @@
 .dropdownIcon {
   width: 50px;
   height: auto;
-  margin-right: 16px; /* Space between image and text */
-  flex-shrink: 0; /* Prevent the image from shrinking */
+  margin-right: 16px; 
+  flex-shrink: 0;
 }
 
 /*for row column of image and text */
@@ -43,7 +43,7 @@
 .dropdownDescription {
   font-size: 12px;
   color: #666;
-  margin-top: 4px; /* Space between title and description */
+  margin-top: 4px; 
 }
 
 
@@ -54,11 +54,15 @@
 }
 
 .arrowContainer {
-  margin-left: 8px; /* Space between text and arrow */
-  opacity: 0; /* Hide the arrow by default */
-  transition: opacity 0.3s; /* Smooth transition for opacity */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Push the arrow to the right */
+  margin-left: auto;
+  transition: transform 0.3s ease;
 }
 
-.dropdownItem:hover .arrowContainer {
-  opacity: 1; /* Show the arrow on hover */
+.dropdownArrow {
+  color: #666767; /* Adjust arrow color */
+  transition: transform 0.3s ease;
 }
+

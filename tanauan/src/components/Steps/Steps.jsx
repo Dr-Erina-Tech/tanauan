@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Steps.module.css';
-import stepsData from './stepsData';
-import { animateElement, animateTitleAndSubtitle } from '../../animations/scrollPopAnimations'; //separate scroll animation
-import useIntersectionObserver from '../../hooks/useIntersectionObserver'; // custom hook for my scroll 
+import { animateElement, animateTitleAndSubtitle } from '../../animations/scrollPopAnimations';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const StepCard = ({ image, imgAlt, title, description }) => (
   <div className={styles.step}>
@@ -12,14 +11,13 @@ const StepCard = ({ image, imgAlt, title, description }) => (
   </div>
 );
 
-const Steps = () => {
+const Steps = ({ steps }) => {  // Make sure we are receiving 'steps' as a prop
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const stepsRefs = useRef([]);
   const lineTopRef = useRef(null);
   const lineBottomRef = useRef(null);
 
-  // State to track scroll direction
   const [isScrollingDown, setIsScrollingDown] = useState(false);
 
   useEffect(() => {
@@ -39,10 +37,8 @@ const Steps = () => {
   }, []);
 
   useEffect(() => {
-    // Reusable animation for title and subtitle
     animateTitleAndSubtitle(titleRef, subtitleRef);
 
-    // Animate each step's content
     stepsRefs.current.forEach((step, index) => {
       const image = step.querySelector(`.${styles['step-image']}`);
       const title = step.querySelector(`.${styles['step-title']}`);
@@ -54,18 +50,15 @@ const Steps = () => {
     });
   }, []);
 
-  // Intersection observer callback to trigger line animations
   const handleIntersection = (entry) => {
     if (entry.isIntersecting && isScrollingDown) {
-      // Add the class only when scrolling down
       entry.target.classList.add(styles['visible-line']);
     }
   };
 
-  // Use the custom IntersectionObserver hook for both lines
   useIntersectionObserver(
     [lineTopRef, lineBottomRef],
-    { threshold: 0.1 }, // Trigger when 10% of the element is visible
+    { threshold: 0.1 },
     handleIntersection
   );
 
@@ -83,11 +76,9 @@ const Steps = () => {
       <div ref={lineBottomRef} className={styles['middle-line-bottom']}></div>
 
       <div className={styles.steps}>
-        {stepsData.map((step, index) => (
-          <div
-            ref={(el) => (stepsRefs.current[index] = el)}
-            key={index}
-          >
+        {/* Map over the 'steps' prop passed from HomeSteps */}
+        {steps.map((step, index) => (
+          <div ref={(el) => (stepsRefs.current[index] = el)} key={index}>
             <StepCard
               image={step.image}
               imgAlt={step.imgAlt}

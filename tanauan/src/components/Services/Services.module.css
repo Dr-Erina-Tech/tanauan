@@ -1,8 +1,6 @@
-.container {
-  background-color: var(--color-light);
+.serviceContainer {
   width: 100%;
-  height: 45vh;
-  margin-bottom: 15rem;
+  height: 100vh;
 }
 
 /* Left text container styling */
@@ -73,10 +71,14 @@
   background-color: var(--color-primary);
   border-color: var(--color-primary);
 }
+.buttonNext svg path,
+.buttonPrev svg path {
+  stroke: var(--color-red)
+}
 
 .buttonNext:hover svg path,
 .buttonPrev:hover svg path {
-  stroke: var(--color-light);
+  stroke: var(--color-secondary);
 }
 
 .swiper {
