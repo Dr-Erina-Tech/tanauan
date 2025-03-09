@@ -4,10 +4,17 @@ import styles from './Hero.module.css'; // CSS module for styling
 import Socials from '../Socials/Socials'; // Social links component
 import { UserPlus, ArrowUpRight } from 'lucide-react'; // Icons
 import HeroCard from './HeroCard'; // Hero Card component for the right part of the hero
+import { getBGImage } from '../../pages/getBGImage'; // Import the getImageUrl function
 
-const Hero = ({ name, description, buttonText, onButtonClick,  showHeroCard = true }) => {
+
+const Hero = ({ name, description, buttonText, onButtonClick,  showHeroCard = true, showSocials = true, page }) => {
+  const backgroundImage = getBGImage(page); 
+
   return (
-    <div className={styles.heroContainer}>
+    <div
+      className={styles.heroContainer}
+      style={{ backgroundImage: `url(${backgroundImage})` }} // Dynamically set background image
+    >
       {/* Flex container for left text and hero card */}
       <div className={styles.contentContainer}>
         {/* Hero Content Section */}
@@ -31,8 +38,10 @@ const Hero = ({ name, description, buttonText, onButtonClick,  showHeroCard = tr
       </div>
 
       {/* Social Links Section */}
-      <Socials />
-    </div>
+      {showSocials && (
+             <Socials />
+        )}
+      </div>
   );
 };
 

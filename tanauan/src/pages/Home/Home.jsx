@@ -22,6 +22,8 @@ const Home = () => {
         description={homeData.hero.description}
         buttonText={homeData.hero.buttonText}
         showHeroCard={true}
+        showSocials={true}
+        page="home" 
       />
       
       {/* Single Suspense wrapper for all lazy-loaded components */}
