@@ -1,7 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import { useState, React } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null); //to handle errors
+  const navigate = useNavigate();
+
+  // Handle the axios POST request to submit the login form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    axios.post('http://localhost:3002/api/auth/login', { email, password }, { withCredentials: true })
+    .then(result => {
+      console.log(result);
+      if (result.data.message === "Success") {
+        navigate('/dashboard');
+      }
+    })
+
+    .catch(err => {
+      console.log(err)
+      setError(err.response?.data?.message || 'Login failed. Please check your email and password');
+  });
+};
+
   return (
     <section className="vh-100" style={{ backgroundColor: '#eee' }}>
       <div className="container h-100">
@@ -11,46 +37,61 @@ const LoginForm = () => {
               <div className="card-body p-md-5">
                 <div className="row justify-content-center">
                   
-                  {/* Login Form */}
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+                    
+                    {/* Error Message */}
+                    {error && <p className="text-danger text-center">{error}</p>}
 
-                    <form className="mx-1 mx-md-4">
+                    {/* Login Form */}
+                    <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
 
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
-                          <input type="email" id="form2Example1c" className="form-control" />
-                          <label className="form-label" htmlFor="form2Example1c">Your Email</label>
+                          <input
+                            type="text"
+                            id="emailInput"
+                            placeholder="Enter Email"
+                            className="form-control"
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                          />
+                          <label className="form-label" htmlFor="emailInput">Your Email</label>
                         </div>
                       </div>
 
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
-                          <input type="password" id="form2Example2c" className="form-control" />
-                          <label className="form-label" htmlFor="form2Example2c">Password</label>
+                          <input
+                            type="password"
+                            id="passwordInput"
+                            placeholder="Enter Password"
+                            className="form-control"
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                          />
+                          <label className="form-label" htmlFor="passwordInput">Password</label>
                         </div>
                       </div>
 
                       <div className="form-check d-flex justify-content-center mb-5">
-                        <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                        <label className="form-check-label" htmlFor="form2Example3">
+                        <input className="form-check-input me-2" type="checkbox" id="rememberMe" />
+                        <label className="form-check-label" htmlFor="rememberMe">
                           Remember me
                         </label>
                       </div>
 
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="button" className="btn btn-primary btn-lg">Login</button>
+                        <button type="submit" className="btn btn-primary btn-lg">Login</button>
                       </div>
-                      </form>
-                        {/*End of form */}
+                    </form>
 
-                         {/*Sign up Button */}
-                         <div className="d-flex justify-content-center">
-                        <p>Don't have an account? <Link to="/signup" className="btn btn-link">Sign Up</Link></p>
-                      </div>
-
+                    {/* Sign up Button */}
+                    <div className="d-flex justify-content-center">
+                      <p>Don't have an account? <Link to="/signup" className="btn btn-link">Sign Up</Link></p>
+                    </div>
                   
                   </div>
 

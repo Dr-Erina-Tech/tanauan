@@ -1,30 +1,26 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Spinner from './components/Spinner/Spinner'; // Fallback while loading
+import Spinner from './components/Spinner/Spinner'; 
+import ProtectedRoute from './ProtectedRoute'; // Secure routes
+
 
 // Lazy load pages
 const LazySignUpPage = React.lazy(() => import('./pages').then(module => ({ default: module.SignUpPage })));
 const LazyLoginPage = React.lazy(() => import('./pages').then(module => ({ default: module.LoginPage })));
+const LazyDashboardPage = React.lazy(() => import('./pages').then(module => ({ default: module.DashboardPage })));
 
 // Define routes
-const routes = [
-  { path: '/', component: LazyLoginPage },
-  { path: '/login', component: LazyLoginPage },
-  { path: '/signup', component: LazySignUpPage },
-];
-
-const AppRoutes = () => {
-  return (
-    <BrowserRouter>
-      <Suspense fallback={<Spinner />}>
-        <Routes>
-          {routes.map(({ path, component }, index) => (
-            <Route key={index} path={path} element={React.createElement(component)} />
-          ))}
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
-  );
-};
+const AppRoutes = () => (
+  <BrowserRouter>
+    <Suspense fallback={<Spinner />}>
+      <Routes>
+        <Route path="/" element={<LazyLoginPage />} />
+        <Route path="/login" element={<LazyLoginPage />} />
+        <Route path="/signup" element={<LazySignUpPage />} />
+        <Route path="/dashboard" element={<ProtectedRoute component={LazyDashboardPage} />} />
+      </Routes>
+    </Suspense>
+  </BrowserRouter>
+);
 
 export default AppRoutes;
