@@ -1,0 +1,178 @@
+.serviceContainer {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  padding: 20px; /* Added padding for smaller screens */
+}
+
+/* Left text container styling */
+.leftTextContainer {
+  margin-left: 5rem;
+  width: 40%;
+  padding: 40px;
+  border-radius: 30px;
+}
+
+@media (max-width: 1024px) {
+  .leftTextContainer {
+    width: 50%;
+    padding: 30px;
+    left: 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  .leftTextContainer {
+    width: 80%;
+    padding: 20px;
+    left: 10%;
+  }
+}
+
+/* Heading styling */
+.heading {
+  color: var(--color-text);
+  font-size: 3rem;
+  line-height: 1.15em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2rem;
+    white-space: normal;
+  }
+}
+
+/* City name styling */
+.cityName {
+  color: var(--color-primary);
+}
+
+/* Paragraph styling */
+.paragraph {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #2f2f2f;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .paragraph {
+    font-size: 0.875rem;
+  }
+}
+
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: 7.5%;
+  padding-top: 2;
+  z-index: 1;
+}
+
+/* Navigation Arrows */
+.navContainer {
+  position: absolute;
+  top: 30%; /* Position arrows above the swiper */
+  right: 0.2%;
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+.buttonNext,
+.buttonPrev {
+  border: 2px solid var(--color-primary);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.buttonNext:hover,
+.buttonPrev:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.buttonNext svg path,
+.buttonPrev svg path {
+  stroke: var(--color-red);
+}
+
+.buttonNext:hover svg path,
+.buttonPrev:hover svg path {
+  stroke: var(--color-secondary);
+}
+
+.swiper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding-top: 70px;
+  padding-bottom: 10px;
+}
+
+.swiperSlide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  min-height: 250px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 300px;
+  }
+}
+
+.cardImage {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.cardContent {
+  padding: 10px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.2em;
+}
+
+.cardDescription {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .cardTitle {
+    font-size: 16px;
+  }
+  
+  .cardDescription {
+    font-size: 12px;
+  }
+}

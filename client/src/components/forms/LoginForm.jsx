@@ -14,6 +14,7 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   
+    console.log({ email, password }); 
     axios.post('http://localhost:3002/api/auth/login', { email, password }, { withCredentials: true })
     .then(result => {
       console.log(result);
@@ -55,6 +56,7 @@ const LoginForm = () => {
                             placeholder="Enter Email"
                             className="form-control"
                             onChange={(e) => setEmail(e.target.value)}
+                            value={email}
                             required
                           />
                           <label className="form-label" htmlFor="emailInput">Your Email</label>
@@ -69,7 +71,8 @@ const LoginForm = () => {
                             id="passwordInput"
                             placeholder="Enter Password"
                             className="form-control"
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => setPassword(e.target.value.trim())}
+                            value={password}
                             required
                           />
                           <label className="form-label" htmlFor="passwordInput">Password</label>

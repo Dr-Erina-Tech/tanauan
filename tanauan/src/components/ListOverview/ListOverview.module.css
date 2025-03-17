@@ -1,0 +1,88 @@
+.container {
+  background-color: white;
+  color: black;
+  font-family: sans-serif;
+}
+
+.searchInput {
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  padding: 8px 16px 8px 40px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.searchInput:focus {
+  border-color: #fbbf24;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+}
+
+.inputBox{
+  max-width: 300px !important;
+}
+/*code of card starts here */
+.imgCardContainer {
+  width: 40%;
+  background-color: var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem
+  
+}
+.cardFullWidth {
+  width: 95% !important; /* to ensure card takes 100% */
+}
+
+.cardLayout {
+  display: flex;
+  gap: 1rem; /* Minimal space between image and content */
+}
+
+.cardBody {
+  display: flex;
+  width: 100%;
+}
+
+.cardImage {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.cardContent {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cardDescription {
+  color: #6b7280;
+}
+
+.followSection {
+  margin-top: 8px;
+}
+
+.pagination {
+  margin-top: 16px;
+}
+
+.displayInfo {
+  color: #6b7280;
+}

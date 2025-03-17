@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const EmployeeModel = require('../models/Employee');
 
-
 //Utility function for email format validation
 const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,7 +24,7 @@ const registerEmployee = async (req, res) => {
     }
 
     if (!validateEmail(email)) {
-        return res.status(400).json({ message: "All fields (name, email, password) are required" });
+        return res.status(400).json({ message: "Invalid Email Format" });
     }
 
     if (!validatePassword(password)) {
@@ -71,15 +70,18 @@ const loginEmployee = async (req, res) => {
         // Find the user by email
         const user = await EmployeeModel.findOne({ email });
         if (!user) {
-            return res.status(400).json({ message: "No records exist" });
+            return res.status(400).json({ message: "Email not found" });
         }
+
 
         // Compare the entered password with the stored hashed password
-        const validPassword = await bcrypt.compare(password, user.password);
+        const validPassword = await bcrypt.compare(password.trim(), user.password);
+        
         if (!validPassword) {
+            console.log("Password comparison failed");
             return res.status(400).json({ message: "The password is incorrect" });
         }
-
+        console.log("Password comparison successful");
         // If password is valid, create a JWT token
         const token = jwt.sign(
             { _id: user._id, email: user.email },

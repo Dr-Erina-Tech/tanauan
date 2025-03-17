@@ -1,0 +1,191 @@
+/* features.module.css */
+
+.featureContainer {
+  height: auto;
+  background-color:var(--color-secondary-text);
+  color: var(--color-secondary-text);
+  font-family: 'Arial', sans-serif;
+  padding: 2rem;
+}
+
+.titleContainer {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.title{
+  font-size: 2.6em;
+  font-weight: 700;
+  color: var(--color-red-2)
+}
+
+.subtitleContainer {
+  text-align: center;
+
+}
+
+.subtitle{
+  font-size: 1em;
+  color: var(--color-text);
+
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dividerLine {
+  border-top: 2px solid #efac00;
+  width: 6rem;
+}
+
+.dividerText {
+  margin:0 1rem;
+  font-size: 1.125rem;
+  color: var(--color-red);
+  font-weight: 600;
+}
+ /* Code for the card */
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  width: 350px;
+  height: 300px;
+  border-radius: 20px;
+  padding: 1.4rem;
+  color: var(--color-text);
+  background-color:#ffffff;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+ 
+}
+
+.featureCardTitle{
+  padding-top: 1rem;
+  font-weight: 600;
+}
+
+.featureIcon {
+  margin-bottom: 1rem;
+}
+
+.featureDescription{
+  padding-top: 0.8rem;
+  z-index: 3;
+}
+
+/*The button circle code starts here*/
+.circleContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 20px; 
+}
+
+.circle {
+  position: absolute; 
+  width: 30px; 
+  height: 30px;
+  background-color: var(--color-red); 
+  border-radius: 50%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+  mix-blend-mode: hard-light; 
+  z-index: 1; 
+  opacity: 0;
+  overflow: hidden;
+}
+
+.featureCard {
+  position: relative; 
+  overflow: hidden; 
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+
+.featureCard:hover .circle {
+  transform: scale(21); 
+  z-index: 1; 
+  opacity: 1;
+  
+}
+ /*read more shown when hovered*/
+ .readMoreContainer {
+  display: flex; 
+  align-items: center; 
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
+  position: absolute;
+  bottom: 14px; 
+  right: 14px; 
+}
+
+.readMoreText {
+  color: #000000; 
+  font-size: 1em; 
+  margin-right: 5px; 
+  transition: opacity 0.3s ease;
+}
+
+.arrowIcon {
+  color: #000000; 
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.3s ease; 
+}
+
+.featureCard:hover .readMoreContainer,
+.featureCard:hover {
+  opacity: 1; 
+}
+
+/* End of the code for the card*/
+
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2em;
+  }
+
+  .subtitleContainer {
+    padding: 0 5rem 2rem 5rem;
+  }
+
+  .featureCard {
+    width: 100%;
+    margin: 1rem 0; /* Add margin between cards on smaller screens */
+  }
+  .featureCard:hover .circle {
+    transform: scale(25); 
+    z-index: 1; 
+    opacity: 1;
+    
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.8em;
+  }
+
+  .subtitleContainer {
+    padding: 0 2rem 2rem 2rem;
+  }
+
+  .dividerText {
+    font-size: 1rem;
+  }
+
+  .featureCard {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
