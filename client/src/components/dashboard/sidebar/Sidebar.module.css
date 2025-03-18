@@ -1,46 +1,114 @@
 .sidebar {
-    width: 250px;
-    height: 100vh;
-    background: linear-gradient(135deg, #1d1f27, #2e3242);
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sidebar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar nav ul li {
-    margin: 20px 0;
-  }
-  
-  .sidebar nav ul li a {
-    display: flex;
-    align-items: center;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px;
-    border-radius: 8px;
-    transition: background 0.3s ease, transform 0.2s;
-  }
-  
-  .sidebar nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.05);
-  }
-  
-  .sidebar nav ul li a .icon {
-    margin-right: 10px;
-    font-size: 24px;
-    color: #a9b3c1;
-  }
-  
-  .sidebar nav ul li a:hover .icon {
-    color: #ffffff;
-  }
-  
+  width: 250px;
+  height: 100vh;
+  background-color: #111827; /* Dark sidebar background */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.sidebarTitle {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  background-color: #111827; /* Dark background for the sidebar */
+}
+
+.sidebarTitleIcon {
+  background-color: #C1E1A6; /* Light greenish background for the icon */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.icon {
+  color: #111827; /* Dark icon color */
+  font-size: 24px; /* Adjust size for the icon */
+}
+
+.titleText {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleText .mainTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.titleText .subTitle {
+  font-size: 14px;
+  color: #9CA3AF; /* Light gray subtitle */
+}
+
+
+nav {
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  color: #9CA3AF; /* Lighter gray text color */
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 15px; /* Rounded corners for hover effect */
+  transition: background-color 0.3s, color 0.3s, border-left 0.3s;
+  position: relative;
+}
+
+.sidebarLink:hover {
+  background-color: #1F2937; /* Slightly lighter background on hover */
+  color: #ffffff; /* White text color on hover */
+  border-left: 4px solid #EF4444; /* Red left border on hover */
+}
+
+.icon {
+  margin-right: 10px;
+  color: #6B7280; /* Gray icon color */
+}
+
+.sidebarLink:hover .icon {
+  color: #ffffff; /* Icon color turns white on hover */
+}
+
+.activeLink {
+  background-color: #1F2937;
+  color: #ffffff;
+  border-left: 4px solid #EF4444; /* Red left border for active link */
+}
+
+.submenu {
+  margin-left: 20px;
+  font-size: 14px;
+  color: #D1D5DB;
+}
+
+.submenuLink {
+  padding-left: 15px;
+  text-decoration: none;
+  color: #9CA3AF;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.submenuLink:hover {
+  color: #ffffff;
+}

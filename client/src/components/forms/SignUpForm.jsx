@@ -3,24 +3,61 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { validateEmail, validatePasswordComplexity, validatePasswordMatch, validateRequiredFields } from './validations/validationForm'; // Assuming these functions exist in validation.js
 
 const SignUpForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   // Handle the axios POST request to submit the registration form
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3002/api/auth/register', { name, email, password }) // register route
+    setError(null); // reset the error message
+
+    // Validate required fields
+    const fields = { name, email, password, confirmPassword };
+    const requiredFieldsError = validateRequiredFields(fields);
+    if (requiredFieldsError) {
+      setError(requiredFieldsError);
+      return;
+    }
+
+     // Validate email
+     const emailError = validateEmail(email);
+     if (emailError) {
+       setError(emailError);
+       return;
+     }
+
+   // Validate password complexity
+    const passwordComplexityError = validatePasswordComplexity(password);
+    if (passwordComplexityError) {
+      setError(passwordComplexityError);
+      return;
+    }
+
+    // Validate password match
+    const passwordMatchError = validatePasswordMatch(password, confirmPassword);
+    if (passwordMatchError) {
+      setError(passwordMatchError);
+      return;
+    }
+
+    // If all validations pass, proceed with registration
+    axios.post('http://localhost:3002/api/auth/register', { name, email, password })
       .then(result => {
         console.log(result);
         navigate('/login');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        setError(err.response?.data?.message || "Registration Failed");
+      });
   };
-
+  
   return (
     <section className="vh-100" style={{ backgroundColor: '#eee' }}>
       <div className="container h-100">
@@ -32,6 +69,9 @@ const SignUpForm = () => {
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
                     
+                    {/* Display error message */}
+                    {error && <p className="text-danger text-center">{error}</p>}
+
                     {/* Sign Up Form */}
                     <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                       
@@ -88,6 +128,7 @@ const SignUpForm = () => {
                             id="confirmPasswordInput"
                             placeholder="Repeat Password"
                             className="form-control"
+                            onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                           />
                           <label className="form-label" htmlFor="confirmPasswordInput">Repeat your password</label>

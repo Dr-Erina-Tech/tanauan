@@ -2,35 +2,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const EmployeeModel = require('../models/Employee');
 
-//Utility function for email format validation
-const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-};
-
-//Utility function for password strength validation
-const validatePassword = (password) => {
-  return password.length >= 6; //Simple length check
-};
 
 // Register new employee
 const registerEmployee = async (req, res) => {
     const { name, email, password } = req.body;
-    
-
-    //validation for name, email, passwords
-    if (!name || !email || !password) {
-        return res.status(400).json({ message:" All fields (name, email, password" })
-    }
-
-    if (!validateEmail(email)) {
-        return res.status(400).json({ message: "Invalid Email Format" });
-    }
-
-    if (!validatePassword(password)) {
-        return res.status(400).json({ message: "Password must be at least 6 characters long" });
-    }
-
 
     try {
         //check if email is already in use
@@ -56,15 +31,6 @@ const registerEmployee = async (req, res) => {
 const loginEmployee = async (req, res) => {
     const { email, password } = req.body;
 
-    // Check if both email and password are provided
-    if (!email || !password) {
-        return res.status(400).json({ message: "Email and password are required" });
-    }
-
-    if (!validateEmail(email)) {
-        return res.status(400).json({ message: "Invalid email format"});
-    }
-
     try {
        
         // Find the user by email
@@ -81,7 +47,7 @@ const loginEmployee = async (req, res) => {
             console.log("Password comparison failed");
             return res.status(400).json({ message: "The password is incorrect" });
         }
-        console.log("Password comparison successful");
+
         // If password is valid, create a JWT token
         const token = jwt.sign(
             { _id: user._id, email: user.email },
