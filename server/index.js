@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(cors({ 
     credentials: true, 
-    origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5177'] 
+    origin: ['http://localhost:3000', 'http://localhost:5173'] 
 })); // Allow credentials for cookies
 app.use(cookieParser()); // Middleware to parse cookies
 

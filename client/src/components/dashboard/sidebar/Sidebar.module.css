@@ -1,114 +1,102 @@
 .sidebar {
-  width: 250px;
+  width: 280px;
+  background-color: #f9f9f9;
   height: 100vh;
-  background-color: #111827; /* Dark sidebar background */
   padding: 20px;
   display: flex;
   flex-direction: column;
-  color: white;
+  justify-content: space-between;
 }
 
-.sidebarTitle {
+.logo {
   display: flex;
   align-items: center;
-  padding: 10px;
-  color: white;
-  background-color: #111827; /* Dark background for the sidebar */
+  margin-bottom: 30px;
 }
 
-.sidebarTitleIcon {
-  background-color: #C1E1A6; /* Light greenish background for the icon */
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
-  border-radius: 5px;
+.logoIcon {
+  color: #8a8a8a;
+  font-size: 30px;
 }
 
-.icon {
-  color: #111827; /* Dark icon color */
-  font-size: 24px; /* Adjust size for the icon */
+.logoText {
+  margin-left: 10px;
 }
 
-.titleText {
-  display: flex;
-  flex-direction: column;
-}
-
-.titleText .mainTitle {
-  font-size: 18px;
+.logoMain {
+  font-size: 20px;
   font-weight: bold;
-  color: white;
 }
 
-.titleText .subTitle {
+.logoSub {
   font-size: 14px;
-  color: #9CA3AF; /* Light gray subtitle */
+  color: #8a8a8a;
 }
 
+.navSection {
+  flex-grow: 1;
+}
 
-nav {
+.sectionTitle {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #ff0000;
   margin-top: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-ul {
-  list-style-type: none;
+.navItems {
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-li {
-  margin-bottom: 20px;
+.navItem {
+  margin-bottom: 10px;
 }
 
-.sidebarLink {
+.navLink {
   display: flex;
   align-items: center;
-  color: #9CA3AF; /* Lighter gray text color */
   text-decoration: none;
-  font-size: 16px;
-  padding: 10px 15px;
-  border-radius: 15px; /* Rounded corners for hover effect */
-  transition: background-color 0.3s, color 0.3s, border-left 0.3s;
-  position: relative;
+  font-size: 0.9rem;
+  color: #848697;
+  padding: 5px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  cursor: pointer;
 }
 
-.sidebarLink:hover {
-  background-color: #1F2937; /* Slightly lighter background on hover */
-  color: #ffffff; /* White text color on hover */
-  border-left: 4px solid #EF4444; /* Red left border on hover */
+.navLink:hover {
+  color: #000000;
 }
 
 .icon {
   margin-right: 10px;
-  color: #6B7280; /* Gray icon color */
-}
-
-.sidebarLink:hover .icon {
-  color: #ffffff; /* Icon color turns white on hover */
-}
-
-.activeLink {
-  background-color: #1F2937;
-  color: #ffffff;
-  border-left: 4px solid #EF4444; /* Red left border for active link */
+  color: #8a8a8a;
+  height: 20px;
 }
 
 .submenu {
   margin-left: 20px;
-  font-size: 14px;
-  color: #D1D5DB;
+  list-style: none;
+  font-size: 0.9rem;
 }
 
 .submenuLink {
-  padding-left: 15px;
   text-decoration: none;
-  color: #9CA3AF;
+  color: #555;
+  padding: 8px;
   display: block;
-  margin-bottom: 10px;
 }
 
-.submenuLink:hover {
-  color: #ffffff;
+
+.dropdownIcon {
+  margin-left: auto;
+  color: #8a8a8a;
+}
+
+.logout {
+  margin-top: auto;
 }

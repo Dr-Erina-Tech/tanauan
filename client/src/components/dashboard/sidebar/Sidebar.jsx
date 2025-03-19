@@ -1,45 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, FileText, Bell, Circle } from 'lucide-react';
+import { Circle, ChevronDown, LogOut } from 'lucide-react';
 import styles from './Sidebar.module.css';
+import sidebarData from './sidebarData';
 
 const Sidebar = () => {
+  const [openSections, setOpenSections] = useState({});
+
+  const toggleSection = (sectionTitle) => {
+    setOpenSections(prevState => ({
+      ...prevState,
+      [sectionTitle]: !prevState[sectionTitle]
+    }));
+  };
+
   return (
     <div className={styles.sidebar}>
-        <div className={styles.sidebarTitle}>
-          <div className={styles.sidebarTitleIcon}>
-            <Circle className={styles.icon} />
-          </div>
-        <div className={styles.titleText}>
-          <div className={styles.mainTitle}>Tanauan</div>
-          <div className={styles.subTitle}>City</div>
+      <div className={styles.logo}>
+        <Circle className={styles.logoIcon} />
+        <div className={styles.logoText}>
+          <div className={styles.logoMain}>Tanauan</div>
+          <div className={styles.logoSub}>City</div>
         </div>
       </div>
-      <nav>
-        <ul>  
-          <li>
-            <Link to="/home" className={`${styles.sidebarLink} ${styles.activeLink}`}>
-              <FileText className={styles.icon} />Dashboard
-            </Link>
-            <ul className={styles.submenu}>
-              <li>
-                <Link to="/create" className={styles.submenuLink}>Create New </Link>
-              </li>
-              <li>
-                <Link to="/modify" className={styles.submenuLink}>Modify Deal</Link>
-              </li>
-              <li>
-                <Link to="/pipeline" className={styles.submenuLink}>Pipeline</Link>
-              </li>
+
+      <nav className={styles.navSection}>
+        {sidebarData.map((section, index) => (
+          <div key={index}>
+            {section.sectionTitle && <div className={styles.sectionTitle}>{section.sectionTitle}</div>}
+            <ul className={styles.navItems}>
+              {section.items.map((item, itemIndex) => (
+                <li key={itemIndex} className={styles.navItem}>
+                  <div
+                    className={styles.navLink}
+                    onClick={() => item.submenu && toggleSection(item.title)}
+                  >
+                    <item.icon className={styles.icon} />
+                    {item.title}
+                    {item.submenu && <ChevronDown className={styles.dropdownIcon} />}
+                  </div>
+
+                  {item.submenu && openSections[item.title] && (
+                    <ul className={styles.submenu}>
+                      {item.submenu.map((submenuItem, submenuIndex) => (
+                        <li key={submenuIndex}>
+                          <Link to={submenuItem.path} className={styles.submenuLink}>
+                            {submenuItem.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
             </ul>
-          </li>
-          <li>
-            <Link to="/notifications" className={styles.sidebarLink}>
-              <Bell className={styles.icon} /> Notifications
-            </Link>
-          </li>
-        </ul>
+          </div>
+        ))}
       </nav>
+
+      {/* Logout at the bottom */}
+      <div className={styles.logout}>
+        <Link to="/logout" className={styles.navLink}>
+          <LogOut className={styles.icon} />
+          Logout
+        </Link>
+      </div>
     </div>
   );
 };
