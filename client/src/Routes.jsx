@@ -1,15 +1,17 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Spinner from './components/Spinner/Spinner'; 
-import ProtectedRoute from './ProtectedRoute'; // Secure routes (Not yet)
+import Spinner from './components/Spinner/Spinner';
+import ProtectedRoute from './ProtectedRoute';
 
 // Lazy load pages
 const LazySignUpPage = React.lazy(() => import('./pages').then(module => ({ default: module.SignUpPage })));
 const LazyLoginPage = React.lazy(() => import('./pages').then(module => ({ default: module.LoginPage })));
-const LazyDashboardLayout = React.lazy(() => import('./pages').then(module => ({ default: module.Dashboard })));
+const LazyDashboardLayout = React.lazy(() => import('./pages/Dashboard/DashboardLayout'));  // Lazy load layout
 
-// Individual Pages inside Dashboard (DYNAMIC CONTENT)
-const LazyHomeContent =  React.lazy(() => import('./contentArea').then(module => ({ default: module.HomeContent })));
+// Lazy load dashboard content
+const LazyHomeContent = React.lazy(() => import('./contentArea/HomeContent/HomeContent'));
+const LazyBarangayContent = React.lazy(() => import('./contentArea/BarangayContent/BarangayContent'));
+
 
 // Define routes
 const AppRoutes = () => (
@@ -21,12 +23,15 @@ const AppRoutes = () => (
         <Route path="/login" element={<LazyLoginPage />} />
         <Route path="/signup" element={<LazySignUpPage />} />
 
-        {/* Dashboard Routes : Not yet protected*/}
-        <Route path="/dashboard" element={<LazyDashboardLayout />} />
+        {/* Dashboard Routes */}
+        <Route path="/dashboard" element={<LazyDashboardLayout />}>
+          {/* Nested Routes inside Dashboard */}
+          <Route path="home" element={<LazyHomeContent />} />
+          <Route path="barangay" element={<LazyBarangayContent />} />
+        </Route>
 
-        {/* Nested Routes for the content */}
-        <Route path="home" element={<LazyHomeContent />} />
-
+        {/* Fallback for non-existing routes */}
+        <Route path="*" element={<div>404 - Not Found</div>} />
       </Routes>
     </Suspense>
   </BrowserRouter>

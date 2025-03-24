@@ -5,23 +5,14 @@ const sidebarData = [
     sectionTitle: "",  // Dashboard at the top with no section title
     items: [
       { title: 'Dashboard', icon: Home, path: '/dashboard' },
-    ],
-  },
-  {
-    sectionTitle: "General",
-    items: [
-      { title: 'City Overview', icon: MapPin, path: '/dashboard/city-overview' },
-      { title: 'City Officials', icon: User, path: '/dashboard//city-officials' },
-    ],
-  },
-  {
-    sectionTitle: "Other Tools",
-    items: [
+      { title: 'City Overview', icon: MapPin, path: '/dashboard/home' },
+      { title: 'City Officials', icon: User, path: '/dashboard/city-officials' },
+      { title: 'Barangay', icon: MapPin, path: '/dashboard/barangay'}, //this will still be changed
       {
         title: 'Transparency Report',
         icon: FileText,
         submenu: [
-          { title: 'Financial Reports', path: '/dashboard/financial-reports' },
+          { title: 'Financial Reports', path: '/dashboard/reports' },
           { title: 'Audit Results', path: '/dashboard/audit-results' },
         ],
       },
@@ -32,7 +23,7 @@ const sidebarData = [
     sectionTitle: "Support",
     items: [
       { title: 'Settings', icon: Settings, path: '/dashboard/settings' },
-      { title: 'Help Center', icon: HelpCircle, path: '/dashboard//help-center' },
+      { title: 'Help Center', icon: HelpCircle, path: '/dashboard/help-center' },
     ],
   },
 ];

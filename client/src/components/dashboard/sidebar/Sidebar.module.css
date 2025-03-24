@@ -1,13 +1,17 @@
+
+/* Sidebar Container */
 .sidebar {
   width: 280px;
-  background-color: #f9f9f9;
+  font-family: 'Be Vietnam Pro', sans-serif;
   height: 100vh;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 20px;
+  background-color: #202020;
 }
 
+/* Logo Section */
 .logo {
   display: flex;
   align-items: center;
@@ -15,7 +19,7 @@
 }
 
 .logoIcon {
-  color: #8a8a8a;
+  color: #ec2626; /* Light green icon color */
   font-size: 30px;
 }
 
@@ -26,26 +30,23 @@
 .logoMain {
   font-size: 20px;
   font-weight: bold;
+  color: #fff; /* White for better contrast */
 }
 
 .logoSub {
   font-size: 14px;
-  color: #8a8a8a;
+  color: #ec2626;;
 }
 
+/* Navigation Items */
 .navSection {
   flex-grow: 1;
 }
 
-.sectionTitle {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #ff0000;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
+.sectionTitle{
+  color: #ec2626;;
+  margin: 1rem 0 0.6rem 0;
 }
-
 .navItems {
   list-style: none;
   padding: 0;
@@ -61,23 +62,30 @@
   align-items: center;
   text-decoration: none;
   font-size: 0.9rem;
-  color: #848697;
+  color: #969593; /* Default text color */
   padding: 5px;
   border-radius: 8px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
   cursor: pointer;
 }
 
 .navLink:hover {
-  color: #000000;
+  background-color: #282828; /* Dark background for hover effect */
+  color: #fff; /* Change text to white on hover */
 }
 
 .icon {
   margin-right: 10px;
-  color: #8a8a8a;
+  color: #8a8a8a; /* Default icon color */
   height: 20px;
+  transition: color 0.3s; /* Smooth transition for icon */
 }
 
+.navLink:hover .icon {
+  color: red; /* Light green icon color on hover */
+}
+
+/* Submenu Styles */
 .submenu {
   margin-left: 20px;
   list-style: none;
@@ -89,14 +97,48 @@
   color: #555;
   padding: 8px;
   display: block;
+  transition: color 0.3s;
+}
+
+.submenuLink:hover {
+  color: #fff; /* White text on hover */
 }
 
 
-.dropdownIcon {
-  margin-left: auto;
-  color: #8a8a8a;
-}
-
+/* Logout Section */
 .logout {
   margin-top: auto;
+}
+/* Footer Wrapper */
+.footerWrapper {
+
+  text-align: center;
+  margin-top: auto; 
+  background-color: #202020;
+}
+
+/* Footer Divider (horizontal line) */
+.footerDivider {
+  border: none;
+  border-top: 1px solid #3e3e3e;
+  margin-bottom: 10px;
+}
+
+/* Footer Styling */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerMainText {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.footerSubText {
+  font-size: 0.65rem;
+  color: #848697; /* Lighter color for subtext */
 }

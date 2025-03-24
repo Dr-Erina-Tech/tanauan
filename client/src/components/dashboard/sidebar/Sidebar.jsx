@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Circle, ChevronDown, LogOut } from 'lucide-react';
 import styles from './Sidebar.module.css';
-import sidebarData from './sidebarData';
+import sidebarData from './sidebarData';  // Data for sidebar
 
 const Sidebar = () => {
   const [openSections, setOpenSections] = useState({});
@@ -25,20 +25,16 @@ const Sidebar = () => {
       </div>
 
       <nav className={styles.navSection}>
-        {sidebarData.map((section, index) => (
-          <div key={index}>
+        {sidebarData.map((section, sectionIndex) => (
+          <div key={sectionIndex}>
             {section.sectionTitle && <div className={styles.sectionTitle}>{section.sectionTitle}</div>}
             <ul className={styles.navItems}>
               {section.items.map((item, itemIndex) => (
                 <li key={itemIndex} className={styles.navItem}>
-                  <div
-                    className={styles.navLink}
-                    onClick={() => item.submenu && toggleSection(item.title)}
-                  >
+                  <Link to={item.path} className={styles.navLink}>
                     <item.icon className={styles.icon} />
                     {item.title}
-                    {item.submenu && <ChevronDown className={styles.dropdownIcon} />}
-                  </div>
+                  </Link>
 
                   {item.submenu && openSections[item.title] && (
                     <ul className={styles.submenu}>
@@ -58,12 +54,21 @@ const Sidebar = () => {
         ))}
       </nav>
 
-      {/* Logout at the bottom */}
+      {/* Logout section */}
       <div className={styles.logout}>
         <Link to="/logout" className={styles.navLink}>
           <LogOut className={styles.icon} />
           Logout
         </Link>
+      </div>
+
+      {/* Footer section inside sidebar */}
+      <div className={styles.footerWrapper}>
+        <hr className={styles.footerDivider} />
+        <div className={styles.footer}>
+          <div className={styles.footerMainText}>Tanauan City©</div>
+          <div className={styles.footerSubText}>All Rights Reserved 2025</div>
+        </div>
       </div>
     </div>
   );
