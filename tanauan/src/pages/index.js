@@ -1,9 +1,10 @@
 
 import Home from "./Home/Home"
 import Barangay from "./Barangay/Barangay"
+import News from "./News/News"
 
 const pages = {
-   Home, Barangay
+   Home, Barangay, News
 }
 
 export default pages;

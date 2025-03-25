@@ -72,10 +72,10 @@ const Navbar = () => {
                     </a>
                     {hasDropdown && openDropdown === index && (
                       <div className={styles.dropdownMenu}>
-                        {dropdownItems.map(({ text, image, description }) => (
+                       {dropdownItems.map(({ text, image, description, link }) => (
                           <div key={text} className={styles.dropdownItemContainer}>
                             <Link
-                              to={`/${text.toLowerCase().replace(/\s+/g, "-")}`}
+                              to={link} // Use the link provided in navItems instead of generating dynamically
                               className={styles.dropdownItem}
                             >
                               <div className={dropdownStyles.imageTextContainer}>

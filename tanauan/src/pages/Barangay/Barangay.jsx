@@ -1,5 +1,5 @@
 import React, { lazy, Suspense} from "react";
-import { Hero, Navbar, ListOverview, Footer, Spinner } from "../../components";
+import { Hero, Navbar, Footer, Spinner } from "../../components";
 import barangayData from "./barangayData";
 
 

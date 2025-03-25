@@ -14,7 +14,7 @@ export { default as Footer } from "./Footer/Footer"
 //barangay page only
 export { default as ListOverview } from "./ListOverview/ListOverview"
 
-//for elements
+//for components only
 export { default as Card } from "./Card/Card"
 export { default as Socials } from "./Socials/Socials"
 

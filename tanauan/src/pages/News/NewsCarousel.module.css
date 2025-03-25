@@ -1,0 +1,129 @@
+.carouselContainer {
+    padding: 5rem;
+    background-color: #d32f2f; /* Softer red */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .title {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #fff; /* White text color */
+  }
+  
+  .seeMoreButton {
+    font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .seeMoreButton:hover {
+    background-color: #ffffff;
+    color: #d32f2f; /* Complementary color */
+  }
+
+  .headerLine{
+    border-bottom: 2px solid #ffffff;
+    margin: 10px 0;
+  }
+  /*Slick carousel code here*/
+  .slickSlide {
+    padding: 15px;
+    width: 280px;
+    margin: 0 10px;
+  }
+  
+  .slickTrack {
+    display: flex;
+    justify-content: center;
+  }
+
+  .slick-dots li button:before{
+    font-size: 16px;
+    color: white;
+  }
+  .slick-dots li.slick-active button:before{
+    color: #d32f2f;
+  }
+  /*end of slick carousel here */
+  .card {
+    background-color: #fff; /* White background for cards */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Subtle zoom on hover */
+  }
+  
+  .card img,
+  .card video {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cardContent {
+    padding: 15px;
+    color: #333;
+  }
+  
+  .cardTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .cardDescription {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* Custom arrows */
+  .prevArrow,
+  .nextArrow {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent */
+    border: none;
+    color: var(--color-red);
+    width: 60px; 
+    height: 60px;
+    padding: 16px;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .prevArrow {
+    left: -50px;
+  }
+  
+  .nextArrow {
+    right: -70px;
+  }
+  
+  .prevArrow:hover,
+  .nextArrow:hover {
+    background-color: #ffffff;
+    color: #b71c1c;
+  }
+  
