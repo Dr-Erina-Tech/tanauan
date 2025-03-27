@@ -15,7 +15,7 @@ const navItems = [
         text: "News and Publication", 
         image: getImageUrl("./Navbar/news.svg"), 
         description: "Stay updated with the latest news.",
-        link: "/news" // Add the link for this item
+        link: "/news" 
       }
     ] 
   },
@@ -27,13 +27,13 @@ const navItems = [
         text: "Vision / Mission", 
         image: getImageUrl("./Navbar/mission.svg"), 
         description: "Our vision and mission statements.",
-        link: "/vision-mission" // Add the link for this item
+        link: "/vision" 
       },
       { 
         text: "City Officials", 
         image: getImageUrl("./Navbar/officials.svg"), 
         description: "Meet the city officials.",
-        link: "/city-officials" // Add the link for this item
+        link: "/cityOfficials" // Add the link for this item
       },
       { 
         text: "Departments", 

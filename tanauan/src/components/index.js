@@ -17,6 +17,8 @@ export { default as ListOverview } from "./ListOverview/ListOverview"
 //for components only
 export { default as Card } from "./Card/Card"
 export { default as Socials } from "./Socials/Socials"
+export { default as HeaderSection } from "./HeaderSection/HeaderSection"  
+export { default as SwiperCard } from "./Card/swiperCard"
 
 //for the lazy load animation
 export { default as Spinner } from "./Spinner/Spinner"

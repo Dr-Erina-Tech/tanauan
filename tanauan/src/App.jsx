@@ -7,12 +7,17 @@ import pages from './pages'; // Import all the pages from index.js
 const LazyHome = React.lazy(() => import('./pages/Home/Home'));
 const LazyBarangay = React.lazy(() => import('./pages/Barangay/Barangay'));
 const LazyNews = React.lazy(() => import('./pages/News/News'))
+const LazyMission = React.lazy(() => import('./pages/Mission/Mission'))
+const LazyCityOfficials = React.lazy(() => import('./pages/cityOfficials/CityOfficials'))
 
 const routes = [
   { path: "/", element: <LazyHome /> },
   { path: "/home", element: <LazyHome /> },
   { path: "/barangay", element: <LazyBarangay /> },
-  { path: "/news", element: <LazyNews />}
+  { path: "/news", element: <LazyNews />},
+  { path: "/vision", element: <LazyMission />},
+  { path: "/cityOfficials", element: <LazyCityOfficials />}
+
 ];
 
 const App = () => {
