@@ -1,0 +1,33 @@
+.heroContainer {
+  background: url('../../assets/hero/otherHeroBG.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 4rem 0; 
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #F2F4F7; 
+}
+
+.heroBreadcrumb {
+  font-size: 1.2rem;
+  color: #B3C5D7; 
+}
+
+.heroBreadcrumb span {
+  margin-right: 0.5rem;
+}
+
+.heroBreadcrumb span:last-child {
+  color: #FBBF24; 
+}

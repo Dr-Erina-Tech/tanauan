@@ -1,0 +1,42 @@
+
+
+.bgContainer{
+  background: url('../../assets//CityOfficial/heroBGcity.svg') no-repeat;
+  background-size: cover;
+}
+.officialsContainer {
+  color: white;
+  margin-top: 7rem;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-weight: 700;
+  font-family: 'Merriweather', serif;
+}
+
+.activeLink {
+  color: #FFC107;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.mayorName {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.mayorImage {
+  height: auto;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.desc{
+  padding: 2rem 3rem;
+}
+

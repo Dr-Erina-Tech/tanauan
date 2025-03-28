@@ -40,6 +40,12 @@ const navItems = [
         image: getImageUrl("./Navbar/department.svg"), 
         description: "Explore various city departments.",
         link: "/departments" // Add the link for this item
+      },
+      { 
+        text: "Citizens Charter", 
+        image: getImageUrl("./Navbar/department.svg"), 
+        description: "Explore Citizens Charter.",
+        link: "/citizensCharter" // Add the link for this item
       }
     ] 
   },
@@ -59,18 +65,13 @@ const navItems = [
         description: "City planning",
         link: "/city-planning" // Add the link for this item
       },
-      { 
-        text: "Senior Citizen ID and Benefits", 
-        image: getImageUrl("./Navbar/senior.svg"), 
-        description: "Senior Citizen ID and Benefits",
-        link: "/senior-citizen-id" // Add the link for this item
-      },
-      { 
-        text: "PWD ID and Services", 
-        image: getImageUrl("./Navbar/pwd.svg"), 
-        description: "PWD ID and Services",
-        link: "/pwd-services" // Add the link for this item
+      {
+        text: "Senior Citizen & PWD ID Services and Benefits",
+        image: getImageUrl("./Navbar/senior.svg"),
+        description: "Services and benefits for Senior Citizens and Persons with Disabilities",
+        link: "/IDservices" 
       }
+      
     ] 
   },
   { 

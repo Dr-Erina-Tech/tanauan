@@ -12,6 +12,7 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [activeNav, setActiveNav] = useState(null); // Active nav for mobile
+  const [isSticky, setIsSticky] = useState(false); // State for sticky class
 
   // Detect screen size
   useEffect(() => {
@@ -21,6 +22,20 @@ const Navbar = () => {
     handleResize(); // Set initial state
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Detect scroll position to toggle sticky class
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsSticky(true); // Add sticky class if scrolled down
+      } else {
+        setIsSticky(false); // Remove sticky class if scrolled up
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleDropdownToggle = (index, hasDropdown) => {
@@ -46,7 +61,7 @@ const Navbar = () => {
     <>
       <TopNav setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
       <nav>
-        <div className={styles.navContainer}>
+        <div className={`${styles.navContainer} ${isSticky ? styles.sticky : ""}`}>
           <div className={styles.logoContainer}>
             <Link to="/home">
               <img
@@ -57,78 +72,24 @@ const Navbar = () => {
             </Link>
           </div>
 
-            {/* Regular Nav for Desktop */}
-            <div className={`${styles.navLinks} ${menuOpen ? styles.show : ""}`}>
-              {!isMobile &&
-                navItems.map(({ text, hasDropdown, dropdownItems }, index) => (
-                  <div key={text} className={styles.navItem}>
-                    <a
-                      href="#"
-                      onClick={(event) => handleClick(event, hasDropdown)}
-                      onMouseEnter={() => handleDropdownToggle(index, hasDropdown)}
-                      className={styles.linkAnimation}
-                    >
-                      {text}
-                    </a>
-                    {hasDropdown && openDropdown === index && (
-                      <div className={styles.dropdownMenu}>
-                       {dropdownItems.map(({ text, image, description, link }) => (
-                          <div key={text} className={styles.dropdownItemContainer}>
-                            <Link
-                              to={link} // Use the link provided in navItems instead of generating dynamically
-                              className={styles.dropdownItem}
-                            >
-                              <div className={dropdownStyles.imageTextContainer}>
-                                <img
-                                  src={image}
-                                  alt={`${text} icon`}
-                                  className={dropdownStyles.dropdownIcon}
-                                />
-                                <div className={dropdownStyles.descriptionContainer}>
-                                  <strong>{text}</strong>
-                                  <span className={dropdownStyles.dropdownDescription}>{description}</span>
-                                </div>
-                                <ChevronRight size={16} className={dropdownStyles.dropdownArrow} />
-                              </div>
-                            </Link>
-                            <hr className={dropdownStyles.dropdownDivider} />
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-
-              {/* Mobile-specific Navigation */}
-              {isMobile && (
-                <>
-                  {/* Parent Navigation (default) */}
-                  {activeNav === null &&
-                    navItems.map(({ text, hasDropdown }, index) => (
-                      <div key={text} className={styles.navItem}>
-                        <a
-                          href="#"
-                          onClick={(event) => handleClick(event, hasDropdown)}
-                          className={styles.linkAnimation}
-                        >
-                          {text}
-                          <ChevronRight size={16} className={styles.arrowIcon} /> {/* Arrow Icon */}
-                        </a>
-                      </div>
-                    ))}
-
-                  {/* Dropdown Navigation (on parent click) */}
-                  {activeNav !== null && (
-                    <div className={styles.dropdownContainer}>
-                      <button className={styles.backButton} onClick={handleBackToNav}>
-                        <ChevronLeft size={16} /> Back
-                      </button>
-                      {activeNav.dropdownItems.map(({ text, image, description }) => (
+          {/* Regular Nav for Desktop */}
+          <div className={`${styles.navLinks} ${menuOpen ? styles.show : ""}`}>
+            {!isMobile &&
+              navItems.map(({ text, hasDropdown, dropdownItems }, index) => (
+                <div key={text} className={styles.navItem}>
+                  <a
+                    href="#"
+                    onClick={(event) => handleClick(event, hasDropdown)}
+                    onMouseEnter={() => handleDropdownToggle(index, hasDropdown)}
+                    className={styles.linkAnimation}
+                  >
+                    {text}
+                  </a>
+                  {hasDropdown && openDropdown === index && (
+                    <div className={styles.dropdownMenu}>
+                      {dropdownItems.map(({ text, image, description, link }) => (
                         <div key={text} className={styles.dropdownItemContainer}>
-                          <Link
-                            to={`/${text.toLowerCase().replace(/\s+/g, "-")}`}
-                            className={styles.dropdownItem}
-                          >
+                          <Link to={link} className={styles.dropdownItem}>
                             <div className={dropdownStyles.imageTextContainer}>
                               <img
                                 src={image}
@@ -143,8 +104,58 @@ const Navbar = () => {
                           </Link>
                           <hr className={dropdownStyles.dropdownDivider} />
                         </div>
-                      ))} 
+                      ))}
                     </div>
+                  )}
+                </div>
+              ))}
+
+            {/* Mobile-specific Navigation */}
+            {isMobile && (
+              <>
+                {/* Parent Navigation (default) */}
+                {activeNav === null &&
+                  navItems.map(({ text, hasDropdown }, index) => (
+                    <div key={text} className={styles.navItem}>
+                      <a
+                        href="#"
+                        onClick={(event) => handleClick(event, hasDropdown)}
+                        className={styles.linkAnimation}
+                      >
+                        {text}
+                        <ChevronRight size={16} className={styles.arrowIcon} /> {/* Arrow Icon */}
+                      </a>
+                    </div>
+                  ))}
+
+                {/* Dropdown Navigation (on parent click) */}
+                {activeNav !== null && (
+                  <div className={styles.dropdownContainer}>
+                    <button className={styles.backButton} onClick={handleBackToNav}>
+                      <ChevronLeft size={16} /> Back
+                    </button>
+                    {activeNav.dropdownItems.map(({ text, image, description }) => (
+                      <div key={text} className={styles.dropdownItemContainer}>
+                        <Link
+                          to={`/${text.toLowerCase().replace(/\s+/g, "-")}`}
+                          className={styles.dropdownItem}
+                        >
+                          <div className={dropdownStyles.imageTextContainer}>
+                            <img
+                              src={image}
+                              alt={`${text} icon`}
+                              className={dropdownStyles.dropdownIcon}
+                            />
+                            <div className={dropdownStyles.descriptionContainer}>
+                              <strong>{text}</strong>
+                              <span className={dropdownStyles.dropdownDescription}>{description}</span>
+                            </div>
+                          </div>
+                        </Link>
+                        <hr className={dropdownStyles.dropdownDivider} />
+                      </div>
+                    ))}
+                  </div>
                 )}
               </>
             )}

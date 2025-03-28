@@ -96,7 +96,7 @@
 /*start of nav*/
 nav {
   position: absolute;
-  font-family: "Outfit", sans-serif;
+  font-family: "Poppins", sans-serif;
   top: 5%;
   left: 2rem; 
   width: 50%;
@@ -113,7 +113,14 @@ nav {
   gap: 20px;
   width: 100%;
   padding-left: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999; /* Ensure it stays on top */
+  background-color: transparent;
+  transition: background-color 0.3s ease;
 }
+
+
 
 /* for LOGO */
 .logoContainer{

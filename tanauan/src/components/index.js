@@ -20,6 +20,15 @@ export { default as Socials } from "./Socials/Socials"
 export { default as HeaderSection } from "./HeaderSection/HeaderSection"  
 export { default as SwiperCard } from "./Card/swiperCard"
 
+export { default as OtherHero } from "./otherHero/OtherHero"
+export { default as ServiceOverview } from "./ServiceOverview/ServiceOverview"
+//components of city officials
+export { default as CityHero } from "./cityOfficials/CityHero"
+export { default as OfficialsList } from "./cityOfficials/OfficialsList"
+export { default as PopularLinks } from "./cityOfficials/PopularLinks"
+
+
+
 //for the lazy load animation
 export { default as Spinner } from "./Spinner/Spinner"
 

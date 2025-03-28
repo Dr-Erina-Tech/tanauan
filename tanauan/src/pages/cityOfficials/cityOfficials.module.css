@@ -1,39 +1,24 @@
-.officialsContainer {
-  background-color: var(--color-red);
-  color: white;
-  margin-top: 7rem;
-  padding: 2rem 1rem;
+/* Example custom styles for city officials page */
+.bgLight {
+  background-color: #f8f9fa !important;
 }
 
-.title {
-  font-weight: 700;
-  font-family: 'Merriweather', serif;
-}
 
-.activeLink {
-  color: #FFC107;
-}
-
-.sectionTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.mayorName {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-top: 0.5rem;
-}
-
-.mayorImage {
-  height: 450px;
+.popularLinks, .officialsList {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff;
   border-radius: 0.5rem;
-  width: 100%;
 }
 
-.desc{
-  padding: 2rem 3rem;
+/* Styling for the PopularLinks component */
+.popularLinks {
+  background-color: #003C82; /* Example background */
+  color: white;
 }
-.footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+/* Styling for the OfficialsList component */
+.officialsList {
+  background-color: white;
+  color: black;
 }

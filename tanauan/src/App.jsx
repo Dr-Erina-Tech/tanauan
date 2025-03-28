@@ -10,13 +10,16 @@ const LazyNews = React.lazy(() => import('./pages/News/News'))
 const LazyMission = React.lazy(() => import('./pages/Mission/Mission'))
 const LazyCityOfficials = React.lazy(() => import('./pages/cityOfficials/CityOfficials'))
 
+const LazyIDservices = React.lazy(() => import('./pages/IDservices/IDservices'))
 const routes = [
   { path: "/", element: <LazyHome /> },
   { path: "/home", element: <LazyHome /> },
   { path: "/barangay", element: <LazyBarangay /> },
   { path: "/news", element: <LazyNews />},
   { path: "/vision", element: <LazyMission />},
-  { path: "/cityOfficials", element: <LazyCityOfficials />}
+  { path: "/cityOfficials", element: <LazyCityOfficials />},
+
+  { path: "IDservices", element: <LazyIDservices />}
 
 ];
 

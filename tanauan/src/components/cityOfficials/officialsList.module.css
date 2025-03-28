@@ -1,0 +1,80 @@
+.officialsList {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Adds space between each official card */
+}
+
+.officialCard {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  gap: 1.5rem; /* Space between image and details */
+}
+
+.officialCard img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.officialDetails {
+  flex: 1;
+}
+
+.officialDetails h3, .officialDetails h4 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.officialDetails p {
+  font-size: 1rem;
+  color: #4A5568; 
+  margin-bottom: 1rem;
+}
+
+.officialSocialLinks {
+  display: flex;
+  gap: 1rem; 
+  margin-top: 0.5rem;
+}
+
+.officialSocialLinks a {
+  color: #718096; /* Grayish color for social links */
+  font-size: 1.5rem; /* Increase size of social icons */
+  transition: color 0.3s ease;
+}
+
+.officialSocialLinks a:hover {
+  color: #3182ce; /* Change to blue on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .officialCard {
+    flex-direction: column; /* Stack image on top of text */
+    align-items: center;
+    text-align: center; /* Center text on smaller screens */
+  }
+
+  .officialCard img {
+    width: 8rem; /* Reduce image size for smaller screens */
+    height: 8rem;
+  }
+
+  .officialDetails h3, .officialDetails h4 {
+    font-size: 1.125rem; /* Slightly reduce heading size */
+  }
+
+  .officialDetails p {
+    font-size: 0.875rem; /* Reduce text size for smaller screens */
+  }
+}

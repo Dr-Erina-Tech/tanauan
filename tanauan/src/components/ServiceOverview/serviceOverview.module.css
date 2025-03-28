@@ -1,0 +1,134 @@
+/* serviceOverview.module.css */
+
+.container {
+  background-color: #f7fafc;
+  display: flex;
+  min-height: 100vh;
+}
+
+.innerContainer {
+  max-width: 1724px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flexContainer {
+    flex-direction: row;
+  }
+}
+
+.serviceList {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .serviceList {
+    width: 33%;
+    margin-bottom: 0;
+  }
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background-color: #edf2f7; /* Default background */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.serviceItem:hover {
+  background-color: #cbd5e0; /* Light hover color */
+}
+
+/* Selected item background (dark red when clicked) */
+.active {
+  background-color: #8b0000; /* Dark red */
+}
+
+.serviceIcon {
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+}
+
+.serviceText {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d3748; /* Default text color */
+}
+
+.mainService {
+  width: 100%;
+  background-color: #1a202c;
+  padding: 24px;
+  border-radius: 8px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .mainService {
+    width: 66%;
+    margin-left: 16px;
+  }
+}
+
+.mainServiceHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.mainServiceIcon {
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+}
+
+.mainServiceTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.mainServiceDescription {
+  font-size: 0.875rem;
+}
+
+.mainServiceLinks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .mainServiceLinks {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mainServiceLink {
+  color: white;
+  text-decoration: none;
+}
+
+.mainServiceLink:hover {
+  text-decoration: underline;
+}
